@@ -1,47 +1,67 @@
 const canvas = document.querySelector('#game');
 const game = canvas.getContext('2d');
 
-let  canvasSize;
+let canvasSize;
 let elementsSize;
 
 window.addEventListener('load', setCanvasSize);
-window.addEventListener('resize',setCanvasSize)
+window.addEventListener('resize', setCanvasSize)
 
 
-function setCanvasSize(){
-    if(window.innerHeight > window.innerWidth){
-        canvasSize = window.innerWidth *0.8;
-    }else {
+function setCanvasSize() {
+    if (window.innerHeight > window.innerWidth) {
+        canvasSize = window.innerWidth * 0.8;
+    } else {
         canvasSize = window.innerHeight * 0.8;
     }
-    
-     canvas.setAttribute('width', canvasSize);
-     canvas.setAttribute('height', canvasSize);
 
-      elementsSize = canvasSize / 10;
+    canvas.setAttribute('width', canvasSize);
+    canvas.setAttribute('height', canvasSize);
 
-     startGame();
+    elementsSize = canvasSize / 10;
+
+    startGame();
 };
 
-function startGame(){
+function startGame() {
 
-    console.log({ canvasSize, elementsSize});
+    console.log({
+        canvasSize,
+        elementsSize
+    });
 
     game.font = elementsSize + 'px Verdana';
     game.textAlign = 'end';
 
-   for(let i = 1; i <= 10; i++){
-       game.fillText(emojis['X'], elementsSize * i,  elementsSize);
-   }
+    const map = maps[0];
+    const mapRows = maps[0].trim().split('\n');
+    const mapRowCols = mapRows.map(row => row.trim().split(''));
+    console.log({
+        map,
+        mapRows,
+        mapRowCols
+    });
+
+
+
+    mapRowCols.forEach((row, rowI) => {
+        row.forEach((col, colI) => {
+            const emoji = emojis[col];
+            const posX = elementsSize * (colI + 1);
+            const posY = 80;
+            game.fillText(emoji, posX, posY);
+            console.log({
+                row,
+                rowI,
+                col,
+                colI
+            });
+        });
+    });
+
+    // for (let row = 1; row <= 10; row++) {
+    //     for (let col = 1; col <= 10; col++) {
+    //         game.fillText(emojis[mapRowCols[row - 1][col - 1]], elementsSize * col, elementsSize * row);
+    //     }
+    // }
 }
-
-
-
-//  game.fillRect(0, 0, 100, 100);
-//  game.clearRect(0, 0, 100, 50);
-
-// game.font = '25px Verdana',
-// game.fillStyle = 'purple';
-// game.textAlign = 'left';
-// game.fillText('Platzi' , 25, 25);
-
