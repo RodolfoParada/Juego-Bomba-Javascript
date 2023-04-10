@@ -8,6 +8,7 @@ const emojis = {
   'BOMB_COLLISION': '🔥',
   'GAME_OVER': '📣',
   'WIN': '🏆',
+  'HEART': '❤️',
 };
 
 const maps = [];
@@ -30,10 +31,10 @@ maps.push(`
   XX----XXXX
   X--XX-XXXX
   X-XXX-XXXX
-  X-XXXX-XXX
+  X--XX--XXX
   XX--XX--XX
   XX--XXX-XX
-  XXXX---IXX
+  XXX----IXX
   XXXXXXXXXX
 `);
 
@@ -43,7 +44,7 @@ maps.push(`
   XX----XXXX
   XX-XXXXXXX
   XX-----XXX
-  XXXXXXX-XX
+  XXXXXX--XX
   XX-----XXX
   XX-XXXXXXX
   XX-----OXX
